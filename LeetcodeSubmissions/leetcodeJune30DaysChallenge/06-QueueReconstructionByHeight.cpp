@@ -22,13 +22,13 @@ Coninue for each height
 */
 class Solution {
 public:
-    vector<pair<int, int>> reconstructQueue(vector<pair<int, int>>& people) {
-        auto comp = [](const pair<int, int>& p1, const pair<int, int>& p2)
-                        { return p1.first > p2.first || (p1.first == p2.first && p1.second < p2.second); };
+    vector<vector<int>> reconstructQueue(vector<vector<int>>& people) {
+        auto comp = [](const vector<int>& p1, const vector<int>& p2)
+                        { return p1[0] > p2[0] || (p1[0] == p2[0] && p1[1] < p2[1]); };
         sort(people.begin(), people.end(), comp);
-        vector<pair<int, int>> res;
+        vector<vector<int>> res;
         for (auto& p : people) 
-            res.insert(res.begin() + p.second, p);
+            res.insert(res.begin() + p[1], p);
         return res;
     }
 };
